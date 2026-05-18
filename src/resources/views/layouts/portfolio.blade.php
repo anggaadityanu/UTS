@@ -6,18 +6,18 @@
     <title>@yield('title', 'Portfolio')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-950 text-white font-sans">
+<body class="bg-white text-gray-800 font-sans antialiased">
 
     {{-- NAVBAR --}}
-    <nav class="fixed top-0 w-full bg-gray-900/80 backdrop-blur-sm border-b border-gray-800 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="{{ route('home') }}" class="text-xl font-bold text-indigo-400">
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="{{ route('home') }}" class="text-xl font-bold text-blue-700 tracking-tight">
                 Portofolio
             </a>
-            <div class="flex gap-6 text-sm">
-                <a href="{{ route('home') }}" class="hover:text-indigo-400 transition">Home</a>
-                <a href="{{ route('projects') }}" class="hover:text-indigo-400 transition">Projects</a>
-                <a href="{{ route('contact') }}" class="hover:text-indigo-400 transition">Contact</a>
+            <div class="flex gap-8 text-sm font-medium text-gray-600">
+                <a href="{{ route('home') }}" class="hover:text-blue-700 transition">Home</a>
+                <a href="{{ route('projects') }}" class="hover:text-blue-700 transition">Projects</a>
+                <a href="{{ route('contact') }}" class="hover:text-blue-700 transition">Contact</a>
             </div>
         </div>
     </nav>
@@ -26,8 +26,16 @@
         @yield('content')
     </main>
 
-    <footer class="text-center py-8 text-gray-500 text-sm border-t border-gray-800 mt-20">
-        &copy; {{ date('Y') }} — Built with Laravel + Filament
+    <footer class="bg-gray-50 border-t border-gray-200 mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <span class="font-bold text-blue-700">Portofolio</span>
+            <p class="text-gray-500 text-sm">&copy; {{ date('Y') }} — Dibangun dengan Laravel & Filament</p>
+            <div class="flex gap-4 text-sm text-gray-500">
+                <a href="{{ route('home') }}" class="hover:text-blue-700 transition">Home</a>
+                <a href="{{ route('projects') }}" class="hover:text-blue-700 transition">Projects</a>
+                <a href="{{ route('contact') }}" class="hover:text-blue-700 transition">Contact</a>
+            </div>
+        </div>
     </footer>
 
 </body>

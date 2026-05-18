@@ -30,7 +30,8 @@ class PortfolioController extends Controller
 
     public function contact()
     {
-        return view('portfolio.contact');
+        $profile = Profile::first();
+        return view('portfolio.contact', compact('profile'));
     }
 
     public function sendContact(Request $request)
