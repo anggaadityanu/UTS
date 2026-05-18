@@ -12,7 +12,7 @@
     <nav class="fixed top-0 w-full bg-gray-900/80 backdrop-blur-sm border-b border-gray-800 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="{{ route('home') }}" class="text-xl font-bold text-indigo-400">
-                &lt;MyPortfolio /&gt;
+                Portofolio
             </a>
             <div class="flex gap-6 text-sm">
                 <a href="{{ route('home') }}" class="hover:text-indigo-400 transition">Home</a>
