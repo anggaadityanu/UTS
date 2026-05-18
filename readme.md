@@ -46,10 +46,3 @@ Website portfolio personal ini dibuat sebagai tugas akhir mata kuliah **Pemrogra
 |----------|-----------|
 | 📧 **Email** | anggaadityanu@student.esaunggul.ac.id |
 | 📱 **Telepon** | 082114981216 |
-
-
-## 🔧 Cara Menjalankan di Lokal
-
-1. **Clone repository**
-   ```bash
-   git clone https://github.com/wilson092/portfolio.git
