@@ -11,12 +11,12 @@ class ProfileSeeder extends Seeder
     {
         if (Profile::count() === 0) {
             Profile::create([
-                'name'    => 'Angga Aditya Nugraha',
+                'name' => 'Angga Aditya Nugraha',
                 'tagline' => 'Junior Laravel Developer',
-                'bio'     => 'Mahasiswa Prodi Teknik Informatika, Fakultas Ilmu Komputer Universitas Esa Unggul.',
-                'email'   => 'anggaadityanu@student.esaunggul.ac.id',
-                'github'  => 'https://github.com/anggaadityanu',
-                'skills'  => ['Laravel', 'Filament', 'Livewire', 'Docker', 'MariaDB', 'Tailwind CSS'],
+                'bio' => 'Mahasiswa Prodi Teknik Informatika, Fakultas Ilmu Komputer Universitas Esa Unggul.',
+                'email' => 'anggaadityanu@student.esaunggul.ac.id',
+                'github' => 'https://github.com/anggaadityanu',
+                'skills' => ['Laravel', 'Filament', 'Livewire', 'Docker', 'MariaDB', 'Tailwind CSS'],
             ]);
         }
     }

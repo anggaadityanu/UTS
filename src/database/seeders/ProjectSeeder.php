@@ -11,12 +11,12 @@ class ProjectSeeder extends Seeder
     {
         if (Project::count() === 0) {
             Project::create([
-                'title'             => 'Nama Project Akhir Kamu',
-                'slug'              => 'project-akhir',
+                'title' => 'Nama Project Akhir Kamu',
+                'slug' => 'project-akhir',
                 'short_description' => 'Deskripsi singkat project akhir kamu.',
-                'is_final_project'  => true,
-                'status'            => 'on_progress',
-                'problem_analysis'  => '<p>Isi dari laporan kamu...</p>',
+                'is_final_project' => true,
+                'status' => 'on_progress',
+                'problem_analysis' => '<p>Isi dari laporan kamu...</p>',
             ]);
         }
     }
