@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
-use App\Http\Controllers\PortfolioController;
 
 Livewire::setUpdateRoute(function ($handle) {
     return Route::post(config('app.asset_prefix') . '/livewire/update', $handle);

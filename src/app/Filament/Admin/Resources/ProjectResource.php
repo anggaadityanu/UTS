@@ -23,8 +23,7 @@ class ProjectResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn ($state, Forms\Set $set) =>
-                        $set('slug', \Illuminate\Support\Str::slug($state))),
+                    ->afterStateUpdated(fn ($state, Forms\Set $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
                 Forms\Components\TextInput::make('slug')->required(),
                 Forms\Components\Textarea::make('short_description')
                     ->required()->columnSpanFull(),
@@ -32,9 +31,9 @@ class ProjectResource extends Resource
                     ->image()->directory('projects/thumbnails')->columnSpanFull(),
                 Forms\Components\Select::make('status')
                     ->options([
-                        'planning'    => 'Planning',
+                        'planning' => 'Planning',
                         'on_progress' => 'On Progress',
-                        'completed'   => 'Completed',
+                        'completed' => 'Completed',
                     ])->required(),
                 Forms\Components\TextInput::make('github_url')->url(),
                 Forms\Components\TextInput::make('demo_url')->url(),
@@ -73,9 +72,9 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('title')->searchable(),
                 Tables\Columns\BadgeColumn::make('status')
                     ->colors([
-                        'warning'  => 'planning',
-                        'primary'  => 'on_progress',
-                        'success'  => 'completed',
+                        'warning' => 'planning',
+                        'primary' => 'on_progress',
+                        'success' => 'completed',
                     ]),
                 Tables\Columns\IconColumn::make('is_final_project')
                     ->label('Laporan Akhir')->boolean(),
@@ -90,9 +89,9 @@ class ProjectResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListProjects::route('/'),
+            'index' => Pages\ListProjects::route('/'),
             'create' => Pages\CreateProject::route('/create'),
-            'edit'   => Pages\EditProject::route('/{record}/edit'),
+            'edit' => Pages\EditProject::route('/{record}/edit'),
         ];
     }
 }
