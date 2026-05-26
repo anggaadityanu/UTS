@@ -12,11 +12,11 @@
 
 ## 📌 Deskripsi Proyek
 
-Website portfolio personal ini dibuat sebagai tugas UTS mata kuliah **Pemrograman Web (CR002)**. Website ini dirancang untuk memperkenalkan diri sebagai **Junior Laravel Developer** sekaligus menampilkan portofolio proyek yang telah dikerjakan. Aplikasi ini dibangun dengan teknologi modern menggunakan Laravel 12, Filament Admin Panel v3, dan Docker untuk deployment.
+Website portfolio personal ini dibuat sebagai tugas UTS mata kuliah **Pemrograman Web (CR002)**. Website ini dirancang untuk memperkenalkan diri sebagai **Junior Laravel Developer** sekaligus menampilkan portofolio proyek yang telah dikerjakan. Aplikasi ini dibangun dengan teknologi modern menggunakan Laravel 12, Filament Admin Panel v3, Livewire, Alpine.js, dan Docker.
 
 ---
 
-## 📸 Screenshot
+## 📸 Screenshot & Demo
 
 ### 🏠 Home Page
 ![Home Page](docs/screenshots/home.png)
@@ -29,6 +29,8 @@ Website portfolio personal ini dibuat sebagai tugas UTS mata kuliah **Pemrograma
 
 ### 🔧 Admin Panel
 ![Admin Panel](docs/screenshots/admin.png)
+
+> 🔗 **Live Demo**: Jalankan secara lokal menggunakan panduan instalasi di bawah.
 
 ---
 
@@ -45,7 +47,7 @@ Website portfolio personal ini dibuat sebagai tugas UTS mata kuliah **Pemrograma
 ## 👤 Profil Pengembang
 
 | **Nama Lengkap** | Angga Aditya Nugraha |
-|-----------------|---------------|
+|-----------------|----------------------|
 | **Panggilan** | Angga |
 | **NIM** | 20240801165 |
 | **Role** | Junior Laravel Developer |
@@ -74,7 +76,8 @@ Website portfolio personal ini dibuat sebagai tugas UTS mata kuliah **Pemrograma
 ### Frontend
 - **Tailwind CSS** — Styling utility framework
 - **Vite** — Build tool & bundler
-- **Livewire** — Interactive components
+- **Livewire** — Reactive components tanpa JavaScript
+- **Alpine.js** — Interaksi UI ringan
 - **Blade Template Engine**
 
 ### DevOps & Infrastructure
@@ -85,12 +88,27 @@ Website portfolio personal ini dibuat sebagai tugas UTS mata kuliah **Pemrograma
 ### Testing & Quality
 - **Pest PHP** — Testing framework
 - **Laravel Pint** — Code style fixer
+- **GitHub Actions** — CI/CD Pipeline
+
+---
+
+## 🔑 Fitur Utama
+
+- ✅ **Responsive Design** — Mobile-friendly dengan hamburger menu
+- ✅ **Admin Panel** — Filament v3 dashboard untuk kelola semua data
+- ✅ **Dynamic Portfolio** — Data dari database, kelola via admin
+- ✅ **Filter Projects** — Filter by status menggunakan Livewire (tanpa refresh)
+- ✅ **Laporan Project Akhir** — Halaman detail dengan ERD & Flowchart lightbox
+- ✅ **Contact Form** — Real-time validation dengan Livewire + Alpine.js
+- ✅ **Role & Permission** — Filament Shield
+- ✅ **Docker Ready** — Siap dijalankan dengan Docker Compose
+- ✅ **CI/CD Pipeline** — GitHub Actions otomatis cek code quality
 
 ---
 
 ## 📋 Kebutuhan Sistem
 
-Untuk menjalankan proyek ini, pastikan sudah terinstall:
+Pastikan sudah terinstall:
 - **Docker** (versi 20.10+)
 - **Docker Compose** (versi 1.29+)
 - **Git**
@@ -99,25 +117,25 @@ Untuk menjalankan proyek ini, pastikan sudah terinstall:
 
 ## 🚀 Panduan Instalasi
 
-### 1. Clone Repository
+### Langkah 1 — Clone Repository
 ```bash
-git clone https://github.com/username/uts-pemweb.git
-cd uts-pemweb
+git clone https://github.com/anggaadityanu/UTS.git
+cd UTS
 ```
 
-### 2. Setup Environment
+### Langkah 2 — Setup Environment
 ```bash
 cp src/.env.example src/.env
 ```
 
-### 3. Jalankan Docker
+### Langkah 3 — Jalankan Docker
 ```bash
 docker compose up -d
 ```
 
-### 4. Masuk ke Container & Setup Laravel
+### Langkah 4 — Setup Laravel (di dalam container)
 ```bash
-docker exec -it uts bash
+docker exec -it uts_php bash
 composer install
 php artisan key:generate
 php artisan migrate --seed
@@ -125,13 +143,14 @@ php artisan storage:link
 exit
 ```
 
-### 5. Build Assets
+### Langkah 5 — Build Assets
 ```bash
 cd src
 npm install && npm run build
+cd ..
 ```
 
-### 6. Akses Aplikasi
+### Langkah 6 — Akses Aplikasi
 
 | URL | Keterangan |
 |-----|-----------|
@@ -140,7 +159,7 @@ npm install && npm run build
 
 ---
 
-## 🔑 Login Admin
+## 🔑 Kredensial Login Admin
 
 | Field | Value |
 |-------|-------|
@@ -149,91 +168,85 @@ npm install && npm run build
 
 ---
 
-## 📖 Cara Penggunaan
+## 📖 Contoh Penggunaan
 
-### Kelola Profile
-1. Login ke `/admin`
-2. Klik menu **Profiles**
-3. Klik **Edit** pada profile yang ada
-4. Update nama, tagline, bio, skills, avatar
-5. Klik **Save** — perubahan langsung tampil di frontend
+### Mengelola Profile
+```
+1. Buka https://uts.test/admin
+2. Login dengan kredensial di atas
+3. Klik menu Profiles di sidebar
+4. Klik Edit pada profile yang ada
+5. Update nama, tagline, bio, skills, avatar
+6. Klik Save — perubahan langsung tampil di https://uts.test
+```
 
-### Tambah Project Baru
-1. Login ke `/admin` → klik **Projects**
-2. Klik **New Project**
+### Menambah Project Baru
+```
+1. Login ke /admin → klik Projects di sidebar
+2. Klik tombol New Project
 3. Isi judul, deskripsi singkat, pilih status
 4. Upload thumbnail (opsional)
 5. Isi link GitHub/Demo (opsional)
-6. Klik **Save**
+6. Klik Save — project tampil di https://uts.test/projects
+```
 
 ### Input Laporan Project Akhir
-1. Login ke `/admin` → klik **Projects**
-2. Klik **New Project** atau **Edit** project yang ada
-3. Centang toggle **"Ini adalah Project Akhir (Laporan)?"**
-4. Bagian **Detail Laporan Akhir** akan muncul otomatis
-5. Isi:
-   - Analisis Masalah & Kebutuhan Sistem
-   - Kebutuhan Sistem & Fitur Utama
-   - Arsitektur & Tech Stack
-   - Upload ERD Diagram & Flowchart
-6. Klik **Save** — tampil otomatis di `/projects/{slug}`
+```
+1. Login ke /admin → klik Projects
+2. Klik New Project atau Edit project yang ada
+3. Centang toggle "Ini adalah Project Akhir (Laporan)?"
+4. Isi Analisis Masalah, Kebutuhan Sistem, Tech Stack
+5. Upload ERD Diagram & Flowchart
+6. Klik Save — tampil di https://uts.test/projects/{slug}
+```
 
 ### Update Status Project
-1. Login ke `/admin` → **Projects**
-2. Klik **Edit** pada project
-3. Ubah field **Status**:
-   - `Planning` → belum dimulai
-   - `On Progress` → sedang dikerjakan
-   - `Completed` → selesai
-4. Klik **Save** — badge status di frontend berubah otomatis
+```
+1. Login ke /admin → Projects
+2. Klik Edit pada project
+3. Ubah Status: Planning / On Progress / Completed
+4. Klik Save — badge status di frontend berubah otomatis
+```
 
-### Lihat Pesan Masuk
-1. Login ke `/admin`
-2. Klik menu **Pesan Masuk**
-3. Semua pesan dari form `/contact` tampil di sini
-4. Klik **View** untuk baca detail pesan
-5. Tandai **Sudah Dibaca** jika perlu
+### Melihat Pesan Masuk dari Contact Form
+```
+1. Login ke /admin
+2. Klik menu Pesan Masuk di sidebar
+3. Semua pesan dari form /contact tampil di sini
+4. Klik View untuk baca detail pesan
+```
 
 ---
 
 ## 📁 Struktur Proyek
 
 ```
-uts-pemweb/
-├── docker-compose.yml              # Docker configuration
-├── README.md                       # Dokumentasi proyek
+UTS/
+├── .github/
+│   └── workflows/
+│       └── ci.yml              # GitHub Actions CI/CD
+├── docker-compose.yml          # Docker configuration
+├── README.md                   # Dokumentasi proyek
+├── LICENSE                     # MIT License
 ├── docs/
-│   └── screenshots/                # Screenshot aplikasi
-├── nginx/                          # Nginx web server config
-│   ├── Dockerfile
-│   └── default.conf
-├── php/                            # PHP-FPM configuration
-│   ├── Dockerfile
-│   └── local.ini
-└── src/                            # Laravel application
+│   ├── screenshots/            # Screenshot aplikasi
+│   └── LAPORAN AWAL PROJEK AKHIR.pdf
+├── nginx/                      # Nginx web server config
+├── php/                        # PHP-FPM configuration
+└── src/                        # Laravel application
     ├── app/
-    │   ├── Filament/Admin/         # Filament resources & pages
-    │   ├── Http/Controllers/       # Controllers
-    │   └── Models/                 # Eloquent models
+    │   ├── Filament/Admin/     # Filament resources & pages
+    │   ├── Http/Controllers/   # Controllers
+    │   ├── Livewire/           # Livewire components
+    │   └── Models/             # Eloquent models
     ├── database/
-    │   ├── migrations/             # Database migrations
-    │   └── seeders/                # Database seeders
+    │   ├── migrations/         # Database migrations
+    │   └── seeders/            # Database seeders
     └── resources/views/
-        ├── layouts/                # Layout templates
-        └── portfolio/              # Portfolio page views
+        ├── layouts/            # Layout templates
+        ├── livewire/           # Livewire views
+        └── portfolio/          # Portfolio page views
 ```
-
----
-
-## 🔑 Fitur Utama
-
-- ✅ **Responsive Design** — Mobile-friendly interface
-- ✅ **Admin Panel** — Filament v3 dashboard
-- ✅ **Dynamic Portfolio** — Data dari database, kelola via admin
-- ✅ **Laporan Project Akhir** — Halaman detail dengan ERD & Flowchart
-- ✅ **Contact Form** — Pesan tersimpan ke database
-- ✅ **Role & Permission** — Filament Shield
-- ✅ **Docker Ready** — Siap dijalankan dengan Docker Compose
 
 ---
 
@@ -265,7 +278,7 @@ docker compose up -d
 
 **Permission storage:**
 ```bash
-docker exec -it uts bash
+docker exec -it uts_php bash
 chown -R www-data:www-data storage bootstrap/cache
 ```
 
@@ -279,30 +292,69 @@ php artisan optimize:clear
 cd src && npm run build
 ```
 
+**Menu admin tidak muncul:**
+```bash
+php artisan shield:super-admin --user=1
+```
+
 ---
 
 ## 📚 Resources
 
 - [Laravel Documentation](https://laravel.com/docs)
 - [Filament Documentation](https://filamentphp.com/docs)
+- [Livewire Documentation](https://livewire.laravel.com)
+- [Alpine.js Documentation](https://alpinejs.dev)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Docker Documentation](https://docs.docker.com)
 
 ---
 
-## 🤝 Kontribusi
+## 🤝 Panduan Kontribusi
 
-1. Fork repository ini
-2. Buat branch baru: `git checkout -b feat/nama-fitur`
-3. Commit perubahan: `git commit -m "feat: tambah fitur X"`
-4. Push ke branch: `git push origin feat/nama-fitur`
-5. Buat Pull Request
+Kontribusi sangat diterima! Ikuti langkah berikut:
+
+1. **Fork** repository ini
+2. **Clone** fork kamu:
+   ```bash
+   git clone https://github.com/username/UTS.git
+   ```
+3. **Buat branch** baru:
+   ```bash
+   git checkout -b feat/nama-fitur
+   ```
+4. **Lakukan perubahan** dan pastikan code style OK:
+   ```bash
+   ./vendor/bin/pint
+   ```
+5. **Commit** dengan pesan deskriptif:
+   ```bash
+   git commit -m "feat: tambah fitur X"
+   ```
+6. **Push** ke branch:
+   ```bash
+   git push origin feat/nama-fitur
+   ```
+7. Buat **Pull Request** ke branch `main`
+
+### Konvensi Commit Message
+
+| Prefix | Kegunaan |
+|--------|----------|
+| `feat:` | Fitur baru |
+| `fix:` | Perbaikan bug |
+| `docs:` | Update dokumentasi |
+| `style:` | Formatting kode |
+| `refactor:` | Refactoring kode |
+| `ci:` | Konfigurasi CI/CD |
 
 ---
 
 ## 📄 Lisensi
 
-Proyek ini dibuat untuk keperluan akademis sebagai tugas UTS Mata Kuliah Pemrograman Web (CR002) Universitas Esa Unggul. Lisensi [MIT](LICENSE).
+Proyek ini dilisensikan di bawah **MIT License** — lihat file [LICENSE](LICENSE) untuk detail lengkap.
+
+Copyright (c) 2026 **Angga Aditya Nugraha**
 
 ---
 
@@ -312,6 +364,8 @@ Proyek ini dibuat untuk keperluan akademis sebagai tugas UTS Mata Kuliah Pemrogr
 - 📧 Email: anggaadityanu@student.esaunggul.ac.id
 - 📱 Phone: 082114981216
 - 🏫 NIM: 20240801165
+- 🐙 GitHub: [@anggaadityanu](https://github.com/anggaadityanu)
 
 ---
 
+*Last Updated: Mei 2026 — UTS CSF412 Pemrograman Web, Universitas Esa Unggul*
