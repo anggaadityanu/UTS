@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+.skill-badge {
+    transition: all 0.2s ease;
+}
+
+.skill-badge:hover {
+    background-color: #1d4ed8;
+    color: white;
+    border-color: #1d4ed8;
+}

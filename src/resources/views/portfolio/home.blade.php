@@ -20,11 +20,18 @@
                 {{ $profile?->bio ?? 'Bio singkat kamu di sini.' }}
             </p>
 
-            {{-- Skills --}}
+            {{-- Skills dengan Alpine.js animation --}}
             @if($profile?->skills)
             <div class="flex flex-wrap gap-2 mb-8 justify-center md:justify-start">
-                @foreach($profile->skills as $skill)
-                <span class="px-3 py-1 bg-white border border-blue-200 text-blue-700 rounded-full text-sm font-medium shadow-sm">
+                @foreach($profile->skills as $index => $skill)
+                <span
+                    x-data="{ show: false }"
+                    x-init="setTimeout(() => show = true, {{ $index * 100 }})"
+                    x-show="show"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 -translate-y-2 scale-90"
+                    x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                    class="px-3 py-1 bg-white border border-blue-200 text-blue-700 rounded-full text-sm font-medium shadow-sm cursor-default skill-badge">
                     {{ $skill }}
                 </span>
                 @endforeach

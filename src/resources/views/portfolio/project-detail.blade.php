@@ -78,27 +78,59 @@
     </div>
     @endif
 
-    {{-- Diagram --}}
+    {{-- Diagram dengan Alpine.js Lightbox --}}
     @if($project->erd_image || $project->flowchart_image)
-    <div class="bg-gray-900 rounded-xl p-6 mb-6">
-        <h2 class="text-2xl font-bold mb-6 text-indigo-400">📊 Rancangan Sistem</h2>
+    <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6">
+        <h2 class="text-2xl font-bold mb-6 text-blue-700">📊 Rancangan Sistem</h2>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             @if($project->erd_image)
             <div>
-                <h3 class="font-semibold mb-3 text-gray-300">Entity Relationship Diagram (ERD)</h3>
+                <h3 class="font-semibold mb-3 text-gray-700">Entity Relationship Diagram (ERD)</h3>
                 <img src="{{ asset('storage/' . $project->erd_image) }}"
-                     class="w-full rounded-lg border border-gray-700" alt="ERD">
+                    onclick="openLightbox(this.src, 'ERD Diagram')"
+                    class="w-full rounded-xl border border-gray-200 cursor-zoom-in hover:shadow-lg transition duration-300"
+                    alt="ERD">
             </div>
             @endif
             @if($project->flowchart_image)
             <div>
-                <h3 class="font-semibold mb-3 text-gray-300">Flowchart Sistem</h3>
+                <h3 class="font-semibold mb-3 text-gray-700">Flowchart Sistem</h3>
                 <img src="{{ asset('storage/' . $project->flowchart_image) }}"
-                     class="w-full rounded-lg border border-gray-700" alt="Flowchart">
+                    onclick="openLightbox(this.src, 'Flowchart Sistem')"
+                    class="w-full rounded-xl border border-gray-200 cursor-zoom-in hover:shadow-lg transition duration-300"
+                    alt="Flowchart">
             </div>
             @endif
         </div>
     </div>
+
+    {{-- Lightbox Modal --}}
+    <div id="lightbox" onclick="closeLightbox()"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+        <div onclick="event.stopPropagation()" style="position:relative; max-width:900px; width:100%;">
+            <button onclick="closeLightbox()"
+                    style="position:absolute; top:-40px; right:0; color:white; font-size:2rem; font-weight:bold; background:none; border:none; cursor:pointer;">×</button>
+            <p id="lightbox-title" style="color:white; text-align:center; margin-bottom:10px; font-weight:600;"></p>
+            <<img id="lightbox-img" src="" 
+            style="max-width:100%; max-height:80vh; object-fit:contain; border-radius:12px; box-shadow:0 25px 50px rgba(0,0,0,0.5);" 
+            alt="Diagram">
+        </div>
+    </div>
+
+    <script>
+    function openLightbox(src, title) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox-title').innerText = title;
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+    });
+    </script>
     @endif
 
     @endif {{-- end is_final_project --}}
