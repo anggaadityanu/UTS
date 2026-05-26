@@ -14,18 +14,18 @@ class ContactForm extends Component
     public bool $submitted = false;
 
     protected array $rules = [
-        'name'    => 'required|string|max:100',
-        'email'   => 'required|email',
+        'name' => 'required|string|max:100',
+        'email' => 'required|email',
         'subject' => 'nullable|string|max:200',
         'message' => 'required|string|min:10',
     ];
 
     protected array $messages = [
-        'name.required'    => 'Nama wajib diisi.',
-        'email.required'   => 'Email wajib diisi.',
-        'email.email'      => 'Format email tidak valid.',
+        'name.required' => 'Nama wajib diisi.',
+        'email.required' => 'Email wajib diisi.',
+        'email.email' => 'Format email tidak valid.',
         'message.required' => 'Pesan wajib diisi.',
-        'message.min'      => 'Pesan minimal 10 karakter.',
+        'message.min' => 'Pesan minimal 10 karakter.',
     ];
 
     // Real-time validation saat user mengetik
@@ -39,8 +39,8 @@ class ContactForm extends Component
         $this->validate();
 
         ContactMessage::create([
-            'name'    => $this->name,
-            'email'   => $this->email,
+            'name' => $this->name,
+            'email' => $this->email,
             'subject' => $this->subject,
             'message' => $this->message,
         ]);
