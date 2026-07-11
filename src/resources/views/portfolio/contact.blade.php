@@ -2,8 +2,8 @@
 @section('title', 'Contact')
 
 @section('content')
-<section class="bg-gradient-to-b from-blue-50 to-white min-h-screen py-20">
-    <div class="max-w-2xl mx-auto px-6">
+<section class="bg-gradient-to-b from-blue-50 to-white min-h-[calc(100vh-5rem)] py-16 md:py-20">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
 
         <div class="mb-10">
             <span class="text-blue-700 font-semibold text-sm uppercase tracking-widest">Get In Touch</span>
